@@ -1,4 +1,6 @@
-package com.franco;
+package com.franco.server;
+
+import com.franco.MyBootStrap;
 
 /**
  * TestMain

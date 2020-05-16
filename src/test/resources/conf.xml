@@ -6,7 +6,7 @@
         <init-param>
             <props>
                 <property name="scanPackages" type="string">com.franco</property>
-                <property name="actionPackages" type="string">com.franco.test</property>
+                <property name="actionPackages" type="string">com.franco</property>
                 <property name="historyMsgLen" type="int">100</property>
                 <property name="serverName" type="string">server_3</property>
             </props>

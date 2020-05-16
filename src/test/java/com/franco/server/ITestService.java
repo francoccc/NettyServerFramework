@@ -1,4 +1,4 @@
-package com.franco;
+package com.franco.server;
 
 public interface ITestService {
 
