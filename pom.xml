@@ -26,13 +26,13 @@
 
     <dependencies>
         <!-- mysql-connection -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.39</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/mysql-connector-java-5.1.39-bin.jar</systemPath>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--            <version>5.1.39</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/lib/mysql-connector-java-5.1.39-bin.jar</systemPath>-->
+<!--        </dependency>-->
         <!-- springframework -->
         <dependency>
             <groupId>org.springframework</groupId>
