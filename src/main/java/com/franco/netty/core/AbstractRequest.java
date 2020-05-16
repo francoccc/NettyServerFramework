@@ -31,7 +31,7 @@ public abstract class AbstractRequest implements Request {
         this.ctx = ctx;
         this.channel = channel;
         this.message = message;
-        this.globalKeyValue = message.getGlobalKeyValue();
+        this.globalKeyValue = message != null ? message.getGlobalKeyValue() : null;
         this.createTime = System.currentTimeMillis();
     }
 

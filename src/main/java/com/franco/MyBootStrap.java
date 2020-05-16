@@ -87,7 +87,7 @@ public class MyBootStrap {
                             ch.pipeline().addLast(new TcpMessageDecoder());
                             ch.pipeline().addLast(new TcpServerHandler(servlet));
                         }
-                    }).childOption(ChannelOption.SO_BACKLOG, 1024)
+                    }).option(ChannelOption.SO_BACKLOG, 1024)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
             ChannelFuture f = b.bind(tcpPort).sync();
             f.channel().closeFuture().sync();
@@ -95,7 +95,5 @@ public class MyBootStrap {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
-
-        System.out.println("test");
     }
 }

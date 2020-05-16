@@ -219,8 +219,8 @@ public class StandardSession implements Session {
     }
 
     public synchronized void setPush(Push push) {
-        if (null != push) {
-            push.clear();
+        if (null != this.push) {
+            this.push.clear();
         }
         this.push = push;
     }

@@ -6,7 +6,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 -->
 <configuration scan="false" scanPeriod="60 seconds" debug="false">
     <!-- 定义日志的根目录 (此路径会生成eclipse根目录的相对路径，生产环境建议配合环境变量使用绝对路径)-->
-    <property name="LOG_HOME" value="/Users/franco/Desktop/log" />
+    <property name="LOG_HOME" value="log" />
     <!-- 定义日志文件名称 -->
     <property name="appName" value="server"></property>
 

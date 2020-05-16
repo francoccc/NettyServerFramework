@@ -15,7 +15,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
  *
  * @author franco
  */
-public class TcpServerHandler extends SimpleChannelInboundHandler {
+public class TcpServerHandler extends SimpleChannelInboundHandler<RequestMessage> {
 
     private Servlet servlet;
 
@@ -28,13 +28,12 @@ public class TcpServerHandler extends SimpleChannelInboundHandler {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        RequestMessage m = (RequestMessage) msg;
+    protected void channelRead0(ChannelHandlerContext ctx, RequestMessage msg) throws Exception {
 //        ActionMapUtil.invoke(m.getHeader().getCammand(), ctx, m);
         String sessionId = ctx.channel().attr(NettyConstants.SESSON_ID).get();
         SessionManager.getInstance().access(sessionId);
-        m.setSessionId(sessionId);
-        TcpRequest request = new TcpRequest(servlet.getServletContext(), ctx, ctx.channel(), m);
+        msg.setSessionId(sessionId);
+        TcpRequest request = new TcpRequest(servlet.getServletContext(), ctx, ctx.channel(), msg);
         TcpResponse response = new TcpResponse(ctx.channel());
         servlet.service(request, response);
     }
@@ -51,6 +50,8 @@ public class TcpServerHandler extends SimpleChannelInboundHandler {
             session = SessionManager.getInstance().getSession(sessionId, true);
         }
         ctx.channel().attr(NettyConstants.SESSON_ID).set(session.getId());
+        TcpRequest request = new TcpRequest(servlet.getServletContext(), ctx, ctx.channel(), null);
+        session.setPush(request.newPush());
         super.channelActive(ctx);
     }
 

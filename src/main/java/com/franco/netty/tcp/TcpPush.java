@@ -20,13 +20,13 @@ public class TcpPush implements Push {
 
     public void push(Session session, String command, byte[] body) {
         if(isPushable()) {
-            channel.write(WrapperUtil.wrapper(0, command, body));
+            channel.pipeline().writeAndFlush(WrapperUtil.wrapper(0, command, body));
         }
     }
 
     public void push(Session session, Object buffer) {
         if(isPushable()) {
-            channel.write(buffer);
+            channel.pipeline().writeAndFlush(buffer);
         } else {
             // Session save
         }
@@ -34,7 +34,7 @@ public class TcpPush implements Push {
 
     public void push(String command, byte[] body) {
         if(isPushable()) {
-            channel.write(WrapperUtil.wrapper(0, command, body));
+            channel.pipeline().writeAndFlush(WrapperUtil.wrapper(0, command, body));
         }
     }
 
@@ -57,6 +57,6 @@ public class TcpPush implements Push {
     }
 
     public ServerProtocol getPushProtocol() {
-        return null;
+        return ServerProtocol.TCP;
     }
 }
